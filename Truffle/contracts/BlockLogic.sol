@@ -128,4 +128,19 @@ contract BlockLogic is AccessControl, Pausable, Ownable {
         blockData = BlockData(BlockDataAddr);
         blockData.setApprover(_projectId, _requirementId, _approverAddr);
     }
+
+    ///@dev set requirement as made
+    function setMadeRequirement(
+        uint256 _projectId,
+        uint256 _requirementId,
+        string memory _requirementHash
+    ) public whenNotPaused hasAdminRole hasMakerRole {
+        blockData = BlockData(BlockDataAddr);
+        blockData.setMadeRequirement(
+            _projectId,
+            _requirementId,
+            _requirementHash,
+            msg.sender
+        );
+    }
 }

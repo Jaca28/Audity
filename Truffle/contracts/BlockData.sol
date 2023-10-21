@@ -21,6 +21,11 @@ contract BlockData is AccessControl, Pausable, Ownable {
     mapping(uint => mapping(uint => address[])) public projectRequirementMakers; //Requirement MAKERS list
     mapping(uint => mapping(uint => address[])) public projectRequirementRevs; //Requirement REVIEWERS list
     mapping(uint => mapping(uint => address[])) public projectRequirementApps; //Requirement APPROVERS list
+    mapping(uint => mapping(uint => string[3])) public projectRequirementHash; //[MADE, REVIEWED, APPROVED] Actual hash
+    mapping(uint => mapping(uint => string[])) public requirementMadeHis; //MADE History hash
+    mapping(uint => mapping(uint => uint[])) public requirementMadeHisDate; //MADE History date
+    mapping(uint => mapping(uint => address[])) public requirementMadeHisAddr; //MADE History Address
+    mapping(string => uint[2]) public hashToRequirements;
 
     mapping(address => uint[]) public projectsByUser; //user address to project ID
 
@@ -143,6 +148,40 @@ contract BlockData is AccessControl, Pausable, Ownable {
         address[] storage approverList;
         approverList = projectRequirementApps[_projectId][_requirementId];
         approverList.push(_approverAddr);
+    }
+
+    ///@dev set requirement as made
+    function setMadeRequirement(
+        uint256 _projectId,
+        uint256 _requirementId,
+        string memory _requirementHash,
+        address _maker
+    ) public whenNotPaused hasMasterRole {
+        string[] storage madeHis;
+        uint256[] storage madeDateHis;
+        address[] storage madeAddrHis;
+        DataStructure.Project memory project = getProject(_projectId - 1);
+        require(
+            project.state != DataStructure.ProjectState.CLOSED,
+            "El proyecto ya ha sido cerrado"
+        );
+        projectRequirementHash[_projectId][_requirementId][
+            0
+        ] = _requirementHash;
+        madeHis = requirementMadeHis[_projectId][_requirementId];
+        madeHis.push(_requirementHash);
+        madeDateHis = requirementMadeHisDate[_projectId][_requirementId];
+        uint256 time = block.timestamp;
+        madeDateHis.push(time);
+        madeAddrHis = requirementMadeHisAddr[_projectId][_requirementId];
+        madeAddrHis.push(_maker);
+        project.lastUpdate = time;
+        hashToRequirements[_requirementHash][0] = _projectId;
+        hashToRequirements[_requirementHash][1] = _requirementId;
+        projects[_projectId - 1] = project;
+        projectRequirementState[_projectId][_requirementId] = DataStructure
+            .RequirementState
+            .MADE;
     }
 
     ///@dev update any parameter of project struct
