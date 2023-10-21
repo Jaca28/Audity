@@ -1,4 +1,4 @@
-<img src="Images\bestQualityAudityLogo-removebg-preview.png">
+<img src="Images\auditySymbol-removebg-preview.png">
 
 # Audity
 Audity is a B2B system for document audit process
