@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+{{>header}}
+
+<body>
+    <div class="body-content row">
+        {{#if (or (eq roll 'superAdmin') (eq roll 'admin')) }}
+        {{>navbar}}
+        {{>sidebar}}
+        <div class="col-md-10 vertical-center1">
+            <div class="row g-1 cover-spin" style="display:none; margin: auto 20em auto auto ;">
+                <div class="cover-spin-message">Waiting Confirmation ...</div>
+            </div>
+            <div class="show">
+                <div class="row">
+                    <div class="col-md-4 g-1 pb-2" data-aos="fade-right" data-aos-offset="-100">
+                        <div class="card p-2 text-center">
+                            <div class="pb-2">
+                                <span class="badge badge-pill badge-outline-primary"><i class="fa fa-cube"></i></span>
+                            </div>
+                            <div class="">
+                                <h6 class="font-weight-medium" style="font-weight: 800; font-size: 1.5rem">
+                                    Create Project
+                                </h6>
+                            </div>
+                            <div class="">
+                                <p class="pt-0 small">With the following form
+                                    you can
+                                    configure
+                                    a new project
+                                    indicating the specifications.
+                                </p>
+                            </div>
+                            <div class="pt-2">
+                                <img class="img-fluid" src="images/create-project.svg">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8 g-1" data-aos="fade-left" data-aos-offset="-100">
+                        <div class="card p-5">
+                            <label class="form-label font-weight-medium pt-2" for="projectName">Project Name</label>
+                            <div class="input-group input-group-sm mb-3 form-outline">
+                                <input type="text" id="projectName" class="form-control"
+                                    placeholder="Assign a name to the project" />
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="button" data-toggle="tooltip"
+                                        data-placement="top"
+                                        title="Refers to the name by which the project to be created will be identified.">
+                                        <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row g-5 mt-4">
+                                <div class="col">
+                                    <label class="form-label font-weight-medium" for="projectAdminAddr">Administratos
+                                        public address</label>
+                                    <div class="input-group input-group-sm mb-3 form-outline">
+                                        <input type="text" id="projectAdminAddr" class="form-control"
+                                            placeholder="Assign administrator's public address" />
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-secondary" type="text" data-toggle="tooltip"
+                                                data-placement="top"
+                                                title="Refers to the wallet or public address of the person who will administer the project.">
+                                                <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <label class="form-label font-weight-medium" for="projectRequirements">Number of
+                                        requirements</label>
+                                    <div class="input-group input-group-sm mb-3 form-outline">
+                                        <input type="text" id="projectRequirements" class="form-control"
+                                            placeholder="Assign number of requirements" />
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-secondary" type="button"
+                                                data-toggle="tooltip" data-placement="top"
+                                                title="Refers to the number of requirements the project will have.">
+                                                <i class="fa fa-info-circle " aria-hidden="true"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-secondary mt-4" id="createProjectButton"
+                                    style="width: 50%;">
+                                    Create Project
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{>scripts}}
+    <script src="/javascripts/contractData.js"></script>
+    <script type="module" src="/javascripts/newProject.js"></script>
+    {{else}}
+    {{>restrictedAccess}}
+    {{/if}}
+</body>
+<footer class="footer2 mt-auto py-0" style="">
+    <div>
+        <img src="images/wave1.svg" alt="">
+    </div>
+</footer>
+</html>
