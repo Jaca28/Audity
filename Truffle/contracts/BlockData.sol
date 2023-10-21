@@ -121,6 +121,18 @@ contract BlockData is AccessControl, Pausable, Ownable {
         makersList.push(_makerAddr);
     }
 
+    ///@dev add reviewer for an specific project requirement
+    function setReviewer(
+        uint256 _projectId,
+        uint256 _requirementId,
+        address _reviewerAddr
+    ) public whenNotPaused hasMasterRole {
+        setProjectNumber(_reviewerAddr, _projectId);
+        address[] storage reviewerList;
+        reviewerList = projectRequirementRevs[_projectId][_requirementId];
+        reviewerList.push(_reviewerAddr);
+    }
+
     ///@dev update any parameter of project struct
     function updateProject(
         uint256 _projectId,
