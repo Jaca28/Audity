@@ -174,6 +174,58 @@ contract BlockLogic is AccessControl, Pausable, Ownable {
         );
     }
 
+    ///@dev update project name in project struct
+    function setProjectName(
+        uint256 _projectId,
+        string memory _name
+    ) public whenNotPaused hasAdminRole {
+        blockData = BlockData(BlockDataAddr);
+        DataStructure.Project memory project = blockData.getProject(
+            _projectId - 1
+        );
+        project.name = _name;
+        blockData.updateProject(_projectId, project);
+    }
+
+    ///@dev update project state in project struct
+    function setProjectState(
+        uint256 _projectId,
+        DataStructure.ProjectState _state
+    ) public whenNotPaused hasAdminRole {
+        blockData = BlockData(BlockDataAddr);
+        DataStructure.Project memory project = blockData.getProject(
+            _projectId - 1
+        );
+        project.state = _state;
+        blockData.updateProject(_projectId, project);
+    }
+
+    ///@dev update project public admin address in project struct
+    function setProjectAdminAddr(
+        uint256 _projectId,
+        address _adminAddr
+    ) public whenNotPaused hasAdminRole {
+        blockData = BlockData(BlockDataAddr);
+        DataStructure.Project memory project = blockData.getProject(
+            _projectId - 1
+        );
+        project.adminAddr = _adminAddr;
+        blockData.updateProject(_projectId, project);
+    }
+
+    ///@dev update project requirements in project struct
+    function setProjectTotalReq(
+        uint256 _projectId,
+        uint _requirements
+    ) public whenNotPaused hasAdminRole {
+        blockData = BlockData(BlockDataAddr);
+        DataStructure.Project memory project = blockData.getProject(
+            _projectId - 1
+        );
+        project.requirements = _requirements;
+        blockData.updateProject(_projectId, project);
+    }
+
     ///@dev create register request function
     function createRegisterRequest(
         address _userAddr,
