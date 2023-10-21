@@ -277,12 +277,6 @@ contract BlockData is AccessControl, Pausable, Ownable {
         registerRequests.push(_registerReq);
     }
 
-    function getProject(
-        uint256 _projectId
-    ) public view whenNotPaused returns (DataStructure.Project memory project) {
-        project = projects[_projectId];
-    }
-
     ///@dev approve register request
     function attendRegisterReq(
         uint256 _idRequest,
@@ -304,6 +298,57 @@ contract BlockData is AccessControl, Pausable, Ownable {
             registerRequests[i] = registerRequests[i + 1];
         }
         registerRequests.pop();
+    }
+
+    function getProject(
+        uint256 _projectId
+    ) public view whenNotPaused returns (DataStructure.Project memory project) {
+        project = projects[_projectId];
+    }
+
+    function getProjectName(
+        uint256 _projectId
+    ) public view whenNotPaused returns (string memory projectName) {
+        projectName = projects[_projectId].name;
+    }
+
+    ///@dev getter functions
+    function getProjectRequirementName(
+        uint256 _projectId,
+        uint256 _requirementId
+    ) public view whenNotPaused returns (string memory requirement) {
+        requirement = projectRequirementName[_projectId][_requirementId];
+    }
+
+    function getProjectAdminAddr(
+        uint256 _projectId
+    ) public view whenNotPaused returns (address adminAddr) {
+        adminAddr = projects[_projectId].adminAddr;
+    }
+
+    function getProjectTotalReq(
+        uint256 _projectId
+    ) public view whenNotPaused returns (uint256 requirements) {
+        requirements = projects[_projectId].requirements;
+    }
+
+    function getProjectsByUser(
+        address _user
+    ) public view whenNotPaused returns (uint256[] memory) {
+        uint256[] memory projectIds;
+        projectIds = projectsByUser[_user];
+        return (projectIds);
+    }
+
+    function getProjectState(
+        uint256 _projectId
+    )
+        public
+        view
+        whenNotPaused
+        returns (DataStructure.ProjectState projectState)
+    {
+        projectState = projects[_projectId].state;
     }
 
     function getRegisterReq(
