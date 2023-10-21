@@ -9,6 +9,13 @@ library DataStructure {
         CLOSED
     }
 
+    enum RequirementState {
+        CREATED,
+        MADE,
+        REVIEWED,
+        APPROVED
+    }
+
     //Project Struct
     struct Project {
         string name;

@@ -85,4 +85,17 @@ contract BlockLogic is AccessControl, Pausable, Ownable {
         blockData.setProject(project);
         emit ProjectCreated(project);
     }
+
+    ///@dev set project requirement -  gives ID and set namet
+    function setProjectRequirement(
+        uint256 _projectId,
+        string memory _nameRequirement
+    ) public whenNotPaused hasAdminRole {
+        blockData = BlockData(BlockDataAddr);
+        blockData.setProjectRequirement(
+            _projectId,
+            _nameRequirement,
+            msg.sender
+        );
+    }
 }
