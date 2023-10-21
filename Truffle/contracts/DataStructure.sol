@@ -9,6 +9,7 @@ library DataStructure {
         CLOSED
     }
 
+    //Project Struct
     struct Project {
         string name;
         uint256 idProject;

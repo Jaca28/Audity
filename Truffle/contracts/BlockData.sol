@@ -46,6 +46,7 @@ contract BlockData is AccessControl, Pausable, Ownable {
         ID += 1;
     }
 
+    //@dev gives an ID to a project
     function setProjectNumber(address _user, uint256 _id) internal virtual {
         uint256[] storage IdProjects;
         IdProjects = projectsByUser[_user];

@@ -76,7 +76,7 @@ contract BlockLogic is AccessControl, Pausable, Ownable {
         blockData = BlockData(BlockDataAddr);
         DataStructure.Project memory project = DataStructure.Project(
             _name,
-            0,
+            0, //the project id is given by the block data
             DataStructure.ProjectState.CREATED,
             _projectAdminAddr,
             _requirements,
