@@ -320,6 +320,17 @@ contract BlockData is AccessControl, Pausable, Ownable {
         requirement = projectRequirementName[_projectId][_requirementId];
     }
 
+    function getProjectState(
+        uint256 _projectId
+    )
+        public
+        view
+        whenNotPaused
+        returns (DataStructure.ProjectState projectState)
+    {
+        projectState = projects[_projectId].state;
+    }
+
     function getProjectAdminAddr(
         uint256 _projectId
     ) public view whenNotPaused returns (address adminAddr) {
@@ -340,15 +351,58 @@ contract BlockData is AccessControl, Pausable, Ownable {
         return (projectIds);
     }
 
-    function getProjectState(
-        uint256 _projectId
+    function getMadeHistory(
+        uint256 _projectId,
+        uint256 _requirementId
     )
         public
         view
         whenNotPaused
-        returns (DataStructure.ProjectState projectState)
+        returns (string[] memory, uint256[] memory, address[] memory)
     {
-        projectState = projects[_projectId].state;
+        string[] memory madeHashHis;
+        uint256[] memory madeDateHashHis;
+        address[] memory madeAddrHis;
+        madeHashHis = requirementMadeHis[_projectId][_requirementId];
+        madeDateHashHis = requirementMadeHisDate[_projectId][_requirementId];
+        madeAddrHis = requirementMadeHisAddr[_projectId][_requirementId];
+        return (madeHashHis, madeDateHashHis, madeAddrHis);
+    }
+
+    function getRevHistory(
+        uint256 _projectId,
+        uint256 _requirementId
+    )
+        public
+        view
+        whenNotPaused
+        returns (string[] memory, uint256[] memory, address[] memory)
+    {
+        string[] memory revHashHis;
+        uint256[] memory revDateHashHis;
+        address[] memory revAddrHis;
+        revHashHis = requirementRevHis[_projectId][_requirementId];
+        revDateHashHis = requirementRevHisDate[_projectId][_requirementId];
+        revAddrHis = requirementRevHisAddr[_projectId][_requirementId];
+        return (revHashHis, revDateHashHis, revAddrHis);
+    }
+
+    function getAppHistory(
+        uint256 _projectId,
+        uint256 _requirementId
+    )
+        public
+        view
+        whenNotPaused
+        returns (string[] memory, uint256[] memory, address[] memory)
+    {
+        string[] memory appHashHis;
+        uint256[] memory appDateHashHis;
+        address[] memory appAddrHis;
+        appHashHis = requirementAppHis[_projectId][_requirementId];
+        appDateHashHis = requirementAppHisDate[_projectId][_requirementId];
+        appAddrHis = requirementAppHisAddr[_projectId][_requirementId];
+        return (appHashHis, appDateHashHis, appAddrHis);
     }
 
     function getRegisterReq(
