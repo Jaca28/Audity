@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+{{>header}}
+
+<body>
+    <div class="container">
+        {{#if (or (eq roll 'superAdmin') (eq roll 'admin')) }}
+        {{>navbar}}
+        {{>sidebar}}
+        <div class="col-md-10 vertical-center2" data-aos="fade-left" data-aos-offset="-100">
+            <div class="row g-1 cover-spin" style="display:none; margin: auto 20em auto -2em;">
+                <div class="cover-spin-message">Waiting Confirmation ...</div>
+            </div>
+            <div class="show">
+                <div class="row">
+                    <div class="col-md-4" data-aos="fade-right" data-aos-offset="-100">
+                        <div class="card p-2 text-center">
+                            <div class="pb-2">
+                                <span class="badge badge-pill badge-outline-primary"><i class="fa fa-wrench"></i></span>
+                            </div>
+                            <div class="">
+                                <h3 class="font-weight-medium" style="font-weight: 800; font-size: 1.5rem">
+                                    Create new requirement
+                                </h3>
+                            </div>
+                            <div class="">
+                                <p class="pt-0 small">Every project must have at least one requirement.
+                                    Indicate the name of the project and assign a requirement to track it.
+                                </p>
+                            </div>
+                            <div class="pt-2">
+                                <img class="img-fluid" src="images/new-requirement.svg" style="scale: 0.95;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8 g-1" data-aos="fade-left" data-aos-offset="-100">
+                        <div class="card p-5">
+                            <br />
+                            <form action="" method="post" class="has-success form-group form-requirement">
+                                <div class="col mt-4">
+                                    <div class="row">
+                                        {{!-- <label class="form-label" for="projectId">Nombre del Proyecto</label>
+                                        <div class="input-group input-group-sm form-outline" style="width: 100%;">
+                                            <select name="projects" id="projects"></select>
+                                        </div> --}}
+
+                                        <label class="form-label" for="projectID">Project Name</label>
+                                        <div class="input-group input-group-sm form-outline">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-secondary" type="button"
+                                                    style="border-radius: 0.5rem 0 0 0.5rem;" data-toggle="tooltip"
+                                                    data-placement="top"
+                                                    title="Refers to the name of the project to which you will assign a requirement.">
+                                                    <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                                </button>
+                                            </div>
+                                            <select class="form-select form-control" id="projects"></select>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="row mt-4">
+                                        <label class="form-label" for="projectRequirementName">
+                                            New requirement name
+                                        </label>
+                                        <div class="input-group input-group-sm form-outline" style="width: 100%;">
+                                            <input type="text" id="projectRequirementName" class="form-control"
+                                                placeholder="Assign name to the requirement" />
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-secondary" type="button"
+                                                    data-toggle="tooltip" data-placement="top"
+                                                    title="Refers to the name by which the requirement will be identified in the chosen project.">
+                                                    <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-actions form-group text-center mt-4" id="container">
+                                    <input type="button" class="btn btn-secondary mt-4" value="Create Requirement"
+                                        id="createRequirementButton" style="width: 50%;">
+                                </div>
+                            </form>
+                            <br />
+                            <br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/javascripts/contractData.js"></script>
+    <script type="module" src="/javascripts/showProjects.js"></script>
+    <script type="module" src="/javascripts/newRequirement.js"></script>
+    {{>scripts}}
+    {{else}}
+    {{>restrictedAccess}}
+    {{/if}}
+</body>
+<footer class="footer2 mt-auto py-0" style="">
+    <div>
+        <img src="images/wave1.svg" alt="">
+    </div>
+</footer>
+
+</html>
