@@ -143,4 +143,19 @@ contract BlockLogic is AccessControl, Pausable, Ownable {
             msg.sender
         );
     }
+
+    ///@dev set requirement as reviewed
+    function setReviewedRequirement(
+        uint256 _projectId,
+        uint256 _requirementId,
+        string memory _requirementHash
+    ) public whenNotPaused hasAdminRole hasReviewerRole {
+        blockData = BlockData(BlockDataAddr);
+        blockData.setReviewedRequirement(
+            _projectId,
+            _requirementId,
+            _requirementHash,
+            msg.sender
+        );
+    }
 }

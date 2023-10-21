@@ -26,8 +26,13 @@ contract BlockData is AccessControl, Pausable, Ownable {
     mapping(uint => mapping(uint => uint[])) public requirementMadeHisDate; //MADE History date
     mapping(uint => mapping(uint => address[])) public requirementMadeHisAddr; //MADE History Address
     mapping(string => uint[2]) public hashToRequirements;
-
     mapping(address => uint[]) public projectsByUser; //user address to project ID
+    mapping(uint => mapping(uint => string[])) public requirementRevHis; //REVIEWED History hash
+    mapping(uint => mapping(uint => uint[])) public requirementRevHisDate; //REVIEWED History date
+    mapping(uint => mapping(uint => address[])) public requirementRevHisAddr; //REVIEWED History Address
+    mapping(uint => mapping(uint => string[])) public requirementAppHis; //APPROVED History hash
+    mapping(uint => mapping(uint => uint[])) public requirementAppHisDate; //APPROVED History date
+    mapping(uint => mapping(uint => address[])) public requirementAppHisAddr; //APPROVED History Address
 
     ///@dev structs
     DataStructure.Project[] public projects;
@@ -182,6 +187,74 @@ contract BlockData is AccessControl, Pausable, Ownable {
         projectRequirementState[_projectId][_requirementId] = DataStructure
             .RequirementState
             .MADE;
+    }
+
+    ///@dev set requirement as reviewed
+    function setReviewedRequirement(
+        uint256 _projectId,
+        uint256 _requirementId,
+        string memory _requirementHash,
+        address _reviewer
+    ) public whenNotPaused hasMasterRole {
+        string[] storage revHis;
+        uint256[] storage revDateHis;
+        address[] storage revAddrHis;
+        DataStructure.Project memory project = getProject(_projectId - 1);
+        require(
+            project.state != DataStructure.ProjectState.CLOSED,
+            "El proyecto ya ha sido cerrado"
+        );
+        projectRequirementHash[_projectId][_requirementId][
+            1
+        ] = _requirementHash;
+        revHis = requirementRevHis[_projectId][_requirementId];
+        revHis.push(_requirementHash);
+        revDateHis = requirementRevHisDate[_projectId][_requirementId];
+        uint256 time = block.timestamp;
+        revDateHis.push(time);
+        revAddrHis = requirementRevHisAddr[_projectId][_requirementId];
+        revAddrHis.push(_reviewer);
+        project.lastUpdate = time;
+        hashToRequirements[_requirementHash][0] = _projectId;
+        hashToRequirements[_requirementHash][1] = _requirementId;
+        projects[_projectId - 1] = project;
+        projectRequirementState[_projectId][_requirementId] = DataStructure
+            .RequirementState
+            .REVIEWED;
+    }
+
+    ///@dev set requirement as approved
+    function setApprovedRequirement(
+        uint256 _projectId,
+        uint256 _requirementId,
+        string memory _requirementHash,
+        address _approver
+    ) public whenNotPaused hasMasterRole {
+        string[] storage appHis;
+        uint256[] storage appDateHis;
+        address[] storage appAddrHis;
+        DataStructure.Project memory project = getProject(_projectId - 1);
+        require(
+            project.state != DataStructure.ProjectState.CLOSED,
+            "El proyecto ya ha sido cerrado"
+        );
+        projectRequirementHash[_projectId][_requirementId][
+            2
+        ] = _requirementHash;
+        appHis = requirementAppHis[_projectId][_requirementId];
+        appHis.push(_requirementHash);
+        appDateHis = requirementAppHisDate[_projectId][_requirementId];
+        uint256 time = block.timestamp;
+        appDateHis.push(time);
+        appAddrHis = requirementAppHisAddr[_projectId][_requirementId];
+        appAddrHis.push(_approver);
+        project.lastUpdate = time;
+        hashToRequirements[_requirementHash][0] = _projectId;
+        hashToRequirements[_requirementHash][1] = _requirementId;
+        projects[_projectId - 1] = project;
+        projectRequirementState[_projectId][_requirementId] = DataStructure
+            .RequirementState
+            .APPROVED;
     }
 
     ///@dev update any parameter of project struct
