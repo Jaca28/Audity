@@ -1,0 +1,158 @@
+<nav class="main-menu">
+    <ul>
+        {{#if (or (eq roll 'superAdmin') (eq roll 'admin')) }}
+        <li>
+            <a href="/projects">
+                <i class="fa fa-thin fa-cubes fa-2x sidebar-icon"></i>
+                <span class="nav-text">
+                    Proyectos
+                </span>
+            </a>
+        </li>
+        <li class="has-subnav">
+            <a href="/createProject">
+                <i class="fa fa-file-text-o fa-2x sidebar-icon"></i>
+                <span class="nav-text">
+                    Crear Proyecto
+                </span>
+            </a>
+
+        </li>
+        <li class="has-subnav">
+            <a href="/newRequirement">
+                <i class="fa fa-plus fa-2x sidebar-icon"></i>
+                <span class="nav-text">
+                    Crear Requisito
+                </span>
+            </a>
+        </li>
+        <li>
+            <a href="/assignState">
+                <i class="fa fa-bar-chart-o fa-2x sidebar-icon"></i>
+                <span class="nav-text">
+                    Asignar Estado Requisito
+                </span>
+            </a>
+        </li>
+        <li>
+            <a href="/grantRole">
+                <i class="fa fa-user fa-2x sidebar-icon"></i>
+                <span class="nav-text">
+                    Otorgar Rol
+                </span>
+            </a>
+        </li>
+        <li>
+            <a href="/hashQuery">
+                <i class="fa fa-search fa-2x sidebar-icon"></i>
+                <span class="nav-text">
+                    Consultar Documento
+                </span>
+            </a>
+        </li>
+        <li>
+            <a href="/approveRegisterRequest">
+                <i class="fa fa-list-alt fa-2x sidebar-icon"></i>
+                <span class="nav-text">
+                    Solicitudes de Registro
+                </span>
+            </a>
+        </li>
+    </ul>
+    {{/if}}
+    {{#if (eq roll 'maker')}}
+    <ul>
+        <li>
+            <a href="/projects">
+                <i class="fa fa-thin fa-cubes fa-2x sidebar-icon"></i>
+                <span class="nav-text">
+                    Proyectos
+                </span>
+            </a>
+        </li>
+        <li>
+            <a href="/madeRequirement">
+                <i class="fa fa-bar-chart-o fa-2x sidebar-icon"></i>
+                <span class="nav-text">
+                    Asignar estado a Requisito
+                </span>
+            </a>
+        </li>
+        <li>
+            <a href="/hashQuery">
+                <i class="fa fa-search fa-2x sidebar-icon"></i>
+                <span class="nav-text">
+                    Consultar Documento
+                </span>
+            </a>
+        </li>
+    </ul>
+    {{/if}}
+    {{#if (eq roll 'reviewer')}}
+    <ul>
+        <li>
+            <a href="/projects">
+                <i class="fa fa-thin fa-cubes fa-2x sidebar-icon"></i>
+                <span class="nav-text">
+                    Proyectos
+                </span>
+            </a>
+        </li>
+        <li>
+            <a href="/reviewedRequirement">
+                <i class="fa fa-bar-chart-o fa-2x sidebar-icon"></i>
+                <span class="nav-text">
+                    Asignar estado a Requisito
+                </span>
+            </a>
+        </li>
+        <li>
+            <a href="/hashQuery">
+                <i class="fa fa-search fa-2x sidebar-icon"></i>
+                <span class="nav-text">
+                    Consultar Documento
+                </span>
+            </a>
+        </li>
+    </ul>
+    {{/if}}
+    {{#if (eq roll 'approver')}}
+    <ul>
+        <li>
+            <a href="/projects">
+                <i class="fa fa-thin fa-cubes fa-2x sidebar-icon"></i>
+                <span class="nav-text">
+                    Proyectos
+                </span>
+            </a>
+        </li>
+        <li>
+            <a href="/approveRequirement">
+                <i class="fa fa-bar-chart-o fa-2x sidebar-icon"></i>
+                <span class="nav-text">
+                    Asignar estado a Requisito
+                </span>
+            </a>
+        </li>
+        <li>
+            <a href="/hashQuery">
+                <i class="fa fa-search fa-2x sidebar-icon"></i>
+                <span class="nav-text">
+                    Consultar Documento
+                </span>
+            </a>
+        </li>
+    </ul>
+    {{/if}}
+
+    {{!-- <ul class="logout">
+        <li>
+            <a href="#">
+                <i class="fa fa-power-off fa-2x sidebar-icon"></i>
+                <span class="nav-text logout-btn">
+                    Logout
+                </span>
+            </a>
+        </li>
+    </ul> --}}
+</nav>

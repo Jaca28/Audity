@@ -1,0 +1,50 @@
+<div id="mobile-menu-overlay"></div>
+<nav class="navbar navbar-expand-lg fixed-top">
+	<div class="container">
+		<a class="navbar-brand" href="/"><img src="images/audityLogo.png" style="scale: 0.6; position: left;"></a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+			aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"><i class="mdi mdi-menu"> </i></span>
+		</button>
+		<div class="" id="navbarTogglerDemo01">
+			<div class="d-lg-none d-flex justify-content-between px-4 py-3 align-items-center">
+				<img src="images/audityLogo.png" class="logo-mobile-menu" alt="logo">
+				<a href="/" class="close-menu"><i class="mdi mdi-close"></i></a>
+			</div>
+			<ul class="navbar-nav ml-auto align-items-center">
+				{{#unless roll}}
+				<li class="nav-item active">
+					<a class="nav-link" href="#home">Home<span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#services">Features</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#about">Project</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#projects">Contact</a>
+				</li>
+				<script>
+					// remove the user's wallet address from local storage
+					window.userWalletAddress = null;
+					window.localStorage.removeItem("userWalletAddress");
+				</script>
+				{{/unless}}
+				<li class="nav-item">
+					<button class="nav-link btn btn-secondary login-btn"
+						style="display:inline-flex; align-items: center;">
+						<img src="images/metamask-logo.png" class="wallet-img" style="width: 25px;" />
+						&nbsp;
+						<span class="wallet-dialog" style="color: #fff;">Login With Metamask</span>
+					</button>
+				</li>
+				<li class="nav-item logout-nav" style="display: none">
+					<button class="logout-btn btn" style="margin-left: -3rem; margin-top: 0.5rem;">
+						<i class="fa fa-power-off fa-2x sidebar-icon" style="width: 45px;"></i>
+					</button>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
