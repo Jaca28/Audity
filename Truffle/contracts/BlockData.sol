@@ -405,6 +405,14 @@ contract BlockData is AccessControl, Pausable, Ownable {
         return (appHashHis, appDateHashHis, appAddrHis);
     }
 
+    function getInfoByHash(
+        string memory _requirementHash
+    ) public view whenNotPaused returns (uint256, uint256) {
+        uint256 projectId = hashToRequirements[_requirementHash][0];
+        uint256 requirementId = hashToRequirements[_requirementHash][1];
+        return (projectId, requirementId);
+    }
+
     function getRegisterReq(
         uint256 _requestId
     )
