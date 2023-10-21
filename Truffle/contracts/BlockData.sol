@@ -96,6 +96,19 @@ contract BlockData is AccessControl, Pausable, Ownable {
         updateProject(_projectId, project);
     }
 
+    ///@dev add maker for an specific project requirement
+    function closeProject(
+        uint256 _projectId
+    ) public whenNotPaused hasMasterRole {
+        DataStructure.Project memory project = getProject(_projectId - 1);
+        require(
+            project.state != DataStructure.ProjectState.CLOSED,
+            "The project has been closed"
+        );
+        project.state = DataStructure.ProjectState.CLOSED;
+        updateProject(_projectId, project);
+    }
+
     ///@dev update any parameter of project struct
     function updateProject(
         uint256 _projectId,
