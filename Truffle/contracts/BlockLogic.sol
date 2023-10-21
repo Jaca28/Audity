@@ -173,4 +173,30 @@ contract BlockLogic is AccessControl, Pausable, Ownable {
             msg.sender
         );
     }
+
+    ///@dev create register request function
+    function createRegisterRequest(
+        address _userAddr,
+        string memory _role
+    ) public whenNotPaused {
+        blockData = BlockData(BlockDataAddr);
+        DataStructure.RegisterRequest memory registerReq = DataStructure
+            .RegisterRequest(0, _userAddr, _role, 0);
+        blockData.setRegisterReq(registerReq);
+    }
+
+    function setRegisterRequest(
+        uint256 _requestId,
+        uint256 _val
+    ) public hasAdminRole whenNotPaused {
+        blockData = BlockData(BlockDataAddr);
+        blockData.attendRegisterReq(_requestId, _val);
+    }
+
+    function setCloseProject(
+        uint256 _projectId
+    ) public hasAdminRole whenNotPaused {
+        blockData = BlockData(BlockDataAddr);
+        blockData.closeProject(_projectId);
+    }
 }

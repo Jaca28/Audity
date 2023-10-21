@@ -25,4 +25,11 @@ library DataStructure {
         uint256 requirements;
         uint256 lastUpdate;
     }
+
+    struct RegisterRequest {
+        uint256 IdReq;
+        address userAddr;
+        string role;
+        uint256 attendState;
+    }
 }

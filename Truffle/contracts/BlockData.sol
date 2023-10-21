@@ -12,6 +12,8 @@ contract BlockData is AccessControl, Pausable, Ownable {
 
     ///@dev variables
     uint256 public ID;
+    uint256 public aRegisterRequest; //Accepted register request
+    uint256 public dRegisterRequest; //Declined register request
 
     ///@dev mappings
     mapping(uint => mapping(uint => string)) public projectRequirementName;
@@ -33,9 +35,11 @@ contract BlockData is AccessControl, Pausable, Ownable {
     mapping(uint => mapping(uint => string[])) public requirementAppHis; //APPROVED History hash
     mapping(uint => mapping(uint => uint[])) public requirementAppHisDate; //APPROVED History date
     mapping(uint => mapping(uint => address[])) public requirementAppHisAddr; //APPROVED History Address
+    mapping(uint => uint256) public requestAttend; //0=unattended, 1=Aproved, 2=Declined
 
     ///@dev structs
     DataStructure.Project[] public projects;
+    DataStructure.RegisterRequest[] public registerRequests;
 
     ///@dev contract functions
     constructor() Ownable() {
@@ -265,9 +269,60 @@ contract BlockData is AccessControl, Pausable, Ownable {
         projects[_projectId - 1] = project;
     }
 
+    ///@dev set register request
+    function setRegisterReq(
+        DataStructure.RegisterRequest memory _registerReq
+    ) public whenNotPaused {
+        _registerReq.IdReq = getRegisterRequestIndex();
+        registerRequests.push(_registerReq);
+    }
+
     function getProject(
         uint256 _projectId
     ) public view whenNotPaused returns (DataStructure.Project memory project) {
         project = projects[_projectId];
+    }
+
+    ///@dev approve register request
+    function attendRegisterReq(
+        uint256 _idRequest,
+        uint256 _val
+    ) public hasMasterRole whenNotPaused {
+        requestAttend[_idRequest] = _val;
+        if (_val == 1) {
+            aRegisterRequest += 1;
+        } else if (_val == 2) {
+            dRegisterRequest += 1;
+        }
+        removeRegisterReqItem(_idRequest);
+    }
+
+    ///@dev remove register request accepted or declined
+    function removeRegisterReqItem(uint256 _idRequest) internal {
+        require(_idRequest < registerRequests.length, "index out of bound");
+        for (uint256 i = _idRequest; i < registerRequests.length - 1; i++) {
+            registerRequests[i] = registerRequests[i + 1];
+        }
+        registerRequests.pop();
+    }
+
+    function getRegisterReq(
+        uint256 _requestId
+    )
+        public
+        view
+        whenNotPaused
+        returns (DataStructure.RegisterRequest memory registerRequest)
+    {
+        registerRequest = registerRequests[_requestId];
+    }
+
+    function getRegisterRequestIndex()
+        public
+        view
+        whenNotPaused
+        returns (uint256)
+    {
+        return (registerRequests.length);
     }
 }
