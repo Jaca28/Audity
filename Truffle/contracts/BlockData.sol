@@ -52,4 +52,10 @@ contract BlockData is AccessControl, Pausable, Ownable {
         IdProjects = projectsByUser[_user];
         IdProjects.push(_id);
     }
+
+    function getProject(
+        uint256 _projectId
+    ) public view whenNotPaused returns (DataStructure.Project memory project) {
+        project = projects[_projectId];
+    }
 }
