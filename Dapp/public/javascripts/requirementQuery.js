@@ -83,12 +83,12 @@ async function showRequirements(projectId) {
         $('#requirements').DataTable({
             "data": arr,
             "columns": [
-                { "title": "Id Requisito" },
-                { "title": "Nombre" },
-                { "title": "Estado" },
+                { "title": "Requirement Id" },
+                { "title": "Name" },
+                { "title": "Status" },
                 { "title": "Hash" },
-                { "title": "Última actualización" },
-                { "title": "Histórico" },
+                { "title": "Last update" },
+                { "title": "Historical" },
             ],
             "columnDefs": [{
                 targets: [5],
@@ -108,19 +108,19 @@ async function showRequirements(projectId) {
             }],
             //para cambiar el lenguaje a español
             "language": {
-                "lengthMenu": "Mostrar _MENU_ Requisitos",
-                "zeroRecords": "No se encontraron requisitos configurados",
-                "info": "Mostrando Requisitos del _START_ al _END_ de un total de _TOTAL_ requisitos",
-                "infoEmpty": "Mostrando proyectos del 0 al 0 de un total de 0 requisitos",
-                "infoFiltered": "(filtrado de un total de _MAX_ requisitos)",
-                "sSearch": "Buscar:",
+                "lengthMenu": "Showing _MENU_ Requirements",
+                "zeroRecords": "No configured requirements found",
+                "info": "Showing requirements from _START_ al _END_ to _TOTAL_ requirements",
+                "infoEmpty": "Showing requirements from  0 to 0 requirements",
+                "infoFiltered": "(Fliter of  total  _MAX_ requirements)",
+                "sSearch": "Search:",
                 "oPaginate": {
-                    "sFirst": "Primero",
-                    "sLast": "Último",
-                    "sNext": "Siguiente",
-                    "sPrevious": "Anterior"
+                    "sFirst": "First",
+                    "sLast": "Last",
+                    "sNext": "Next",
+                    "sPrevious": "Previous"
                 },
-                "sProcessing": "Procesando...",
+                "sProcessing": "Processing...",
             },
             initComplete: function () {
                 // document.querySelector(".wallet-img").style.display = "none";
