@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+{{>header}}
+
+<body>
+    <div class="body-content row">
+        {{#if (or (eq roll 'superAdmin') (eq roll 'admin')) }}
+        {{>navbar}}
+        {{>sidebar}}
+        <div class="col-md-10 vertical-center1">
+            <div class="row g-1 cover-spin" style="display:none; margin: auto 20em auto auto ;">
+                <div class="cover-spin-message">Esperando Confirmación ...</div>
+            </div>
+            <div class="show">
+                <div class="row">
+                    <div class="col-md-4 g-1 pb-2" data-aos="fade-right" data-aos-offset="-100">
+                        <div class="card p-2 text-center">
+                            <div class="pb-2">
+                                <span class="badge badge-pill badge-outline-primary"><i class="fa fa-sitemap"></i></span>
+                            </div>
+                            <div class="">
+                                <h6 class="font-weight-medium" style="font-weight: 800; font-size: 1.5rem">
+                                    Asigna un usuario a un proyecto
+                                </h6>
+                            </div>
+                            <div class="">
+                                <p class="pt-0 small">Con el siguiente formulario
+                                    asignar usuarios a un requisito o actividad específica de un proyecto.
+                                </p>
+                            </div>
+                            <div class="pt-2">
+                                <img class="img-fluid" src="images/set-user.svg">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8 g-1" data-aos="fade-left" data-aos-offset="-100">
+                        <div class="card p-5">
+                            <div class="row">
+                                <div class="col">
+                                    <label class="form-label font-weight-medium">Nombre del Proyecto</label>
+                                    <div class="input-group input-group-sm form-outline">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-secondary" type="button"
+                                                style="border-radius: 0.5rem 0 0 0.5rem;" data-toggle="tooltip"
+                                                data-placement="top"
+                                                title="Se refiere al nombre con el cual se identificará el proyecto a asignar. ">
+                                                <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                            </button>
+                                        </div>
+                                        <select class="form-select form-control" id="projects"></select>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <label class="form-label font-weight-medium" for="projectID">Nombre del Requisito</label>
+                                    <div class="input-group input-group-sm form-outline">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-secondary" type="button"
+                                                style="border-radius: 0.5rem 0 0 0.5rem;" data-toggle="tooltip"
+                                                data-placement="top"
+                                                title="Se refiere al nombre que identifica el requisito en el proyecto elegido.">
+                                                <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                            </button>
+                                        </div>
+                                        <select class="form-select form-control" id="requirements"> </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="row mt-3">
+                                    <label class="form-label font-weight-medium">
+                                        Dirección Pública de usuario
+                                    </label>
+                                    <div class="input-group input-group-sm form-outline">
+                                        <input type="text" id="userAddr" class="form-control"
+                                        placeholder="Asigne la dirección pública del usuario" />
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-secondary" type="text" data-toggle="tooltip"
+                                                data-placement="top"
+                                                title="Se refiere a la Billetera o dirección pública del usuario a quien asignará un rol.">
+                                                <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <label class="form-label font-weight-medium" for="projectID">Seleccione un rol</label>
+                                    <div class="input-group input-group-sm form-outline">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-secondary" type="button"
+                                                style="border-radius: 0.5rem 0 0 0.5rem;" data-toggle="tooltip"
+                                                data-placement="top"
+                                                title="Se refiere al perfil que asignará al usuario.">
+                                                <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                            </button>
+                                        </div>
+                                        <select class="form-select form-control" name="roles" id="roles">
+                                            <option value="maker">Maker</option>
+                                            <option value="reviewer">Reviewer</option>
+                                            <option value="approver">Approver</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-actions form-group text-center pb-2" id="container">
+                                <input type="button" class="btn btn-secondary mt-4" value="Configurar Usuario"
+                                    id="setUserButton">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/javascripts/contractData.js"></script>
+    <script type="module" src="/javascripts/showProjects.js"></script>
+    <script type="module" src="/javascripts/showRequirements.js"></script>
+    <script type="module" src="/javascripts/setUser.js"></script>
+    {{>scripts}}
+    {{else}}
+    {{>restrictedAccess}}
+    {{/if}}
+</body>
+<footer class="footer2 mt-auto py-0" style="">
+    <div>
+        <img src="images/wave1.svg" alt="">
+    </div>
+</footer>
+</html>
