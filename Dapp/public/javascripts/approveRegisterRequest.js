@@ -44,18 +44,18 @@ $(document).ready(function() {
     $('#requests').DataTable({
         "data": arr,
         "columns": [
-            { "title": "Id de Solicitud" },
-            { "title": "Dirección de Usuario" },
-            { "title": "Rol" },
-            { "title": "Aceptar" },
-            { "title": "Rechazar" },
+            { "title": "Request Id" },
+            { "title": "User Address" },
+            { "title": "Role" },
+            { "title": "Accept" },
+            { "title": "Decilne" },
         ],
         "columnDefs": [{
                 targets: 3,
                 render: function(data, type, row, meta) {
                     if (type === 'display') {
                         return $(`<button type="button" class="btn btn-secondary btn-request" data-row0=${row[0]} data-row1=${row[1]} data-row2=${row[2]} data-value=${1} >`)
-                            .text('Aceptar')
+                            .text('Accept')
                             .wrap('<div></div>')
                             .parent()
                             .html()
@@ -69,7 +69,7 @@ $(document).ready(function() {
                 render: function(data, type, row, meta) {
                     if (type === 'display') {
                         return $(`<button type="button" class="btn btn-info btn-request" data-row0=${row[0]} data-row1=${row[1]} data-value=${2} >`)
-                            .text('Rechazar')
+                            .text('Decline')
                             .wrap('<div></div>')
                             .parent()
                             .html()
@@ -83,17 +83,17 @@ $(document).ready(function() {
         "language": {
             "lengthMenu": "Mostrar _MENU_ Solicitudes de registro",
             "zeroRecords": "No se encontraron solicitudes de registro",
-            "info": "Mostrando solicitudes de registro del _START_ al _END_ de un total de _TOTAL_ solicitudes de registro",
-            "infoEmpty": "Mostrando solicitudes de registro del 0 al 0 de un total de 0 solicitudes de registro",
-            "infoFiltered": "(filtrado de un total de _MAX_ solicitudes de registro)",
-            "sSearch": "Buscar:",
+            "info": "Showing register requests _START_ al _END_ for a total of _TOTAL_",
+            "infoEmpty": "Showing register requests del 0 al 0 for a total of 0",
+            "infoFiltered": "(filter  _MAX_ register requests)",
+            "sSearch": "Search:",
             "oPaginate": {
-                "sFirst": "Primero",
-                "sLast": "Último",
-                "sNext": "Siguiente",
-                "sPrevious": "Anterior"
+                "sFirst": "First",
+                "sLast": "Last",
+                "sNext": "Next",
+                "sPrevious": "Previous"
             },
-            "Processing": "Procesando...",
+            "Processing": "Processing...",
         },
         initComplete: function() {
             const divLoadingMessage = document.querySelector('.cover-spin-message');
@@ -125,10 +125,10 @@ async function approveRegister(idRegisterRequest, userAddr, role, value) {
             if (value == 1) {
 
                 Swal.fire({
-                    title: '<strong>Configura el usuario y asigna un proyecto</strong>',
+                    title: '<strong>Configure user and assign to a project</strong>',
                     icon: 'success',
-                    html: 'La dirección pública: ' + userAddr + ' ha sido registrada',
-                    confirmButtonText: `<a href="/grantRole?user=${userAddr}&role=${role}&value=${2}" style="color:#fff;border-radius: 10rem;">Configurar</a>`,
+                    html: 'The public address: ' + userAddr + ' has been registered',
+                    confirmButtonText: `<a href="/grantRole?user=${userAddr}&role=${role}&value=${2}" style="color:#fff;border-radius: 10rem;">Configure</a>`,
                     confirmButtonColor: '#F22E76',
                 }).then(function() {
                     location.reload();
@@ -137,9 +137,9 @@ async function approveRegister(idRegisterRequest, userAddr, role, value) {
             } else if (value == 2) {
 
                 Swal.fire({
-                    title: '<strong>Solicitud Rechazada</strong>',
+                    title: '<strong>Request Declined</strong>',
                     icon: 'error',
-                    html: ' El registro de la dirección pública: ' + userAddr + ' ha sido rechazado',
+                    html: ' Register request: ' + userAddr + ' has been declined',
                     confirmButtonText: '<a href="/approveRegisterRequest" style="color:#fff;border-radius: 10rem;">OK</a> ',
                     confirmButtonColor: '#F22E76',
                 }).then(function() {
