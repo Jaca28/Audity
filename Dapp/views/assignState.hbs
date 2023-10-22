@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{{>header}}
+
+<body>
+    {{#if roll}}
+    {{>navbar}}
+    {{>sidebar}}
+    <div class="body-content row">
+        <div class="col-md-10 vertical-center1" data-aos="fade-left" data-aos-offset="-100">
+            <div class="row g-1 cover-spin" style="display:none; margin: auto 10em auto -1em;">
+                <div class="cover-spin-message">Esperando Confirmación ...</div>
+            </div>
+            <div class="show">
+                <div class="row">
+                    <div class="col-md-4 g-1 pb-2" data-aos="fade-right" data-aos-offset="-100">
+                        <div class="card p-2 text-center">
+                            <div class="pb-2">
+                                <span class="badge badge-pill badge-outline-primary"><i class="fa fa-rocket"></i></span>
+                            </div>
+                            <div class="">
+                                <h6 class="font-weight-medium" style="font-weight: 800; font-size: 1.5rem">
+                                    Asignación de estado a requisito
+                                </h6>
+                            </div>
+                            <div class="">
+                                <p class="pt-0 small">Con el siguiente formulario
+                                    puedes asignar el estado a un requerimiento para hacerle seguimiento.
+                                </p>
+                            </div>
+                            <div class="pt-2">
+                                <img class="img-fluid" src="images/assign-state.svg">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8 g-1" data-aos="fade-left" data-aos-offset="-100">
+                        <div class="card p-5">
+                            <br />
+                            <br />
+                            <div class="row g-1">
+                                <div class="col">
+                                    <form id="filehash" action="#" class="has-success form-group">
+                                        <input id="myfilehash" name="file" type="file" class="" />
+                                        <br>
+                                        <br>
+                                        <h6 id="file_hash"></h6>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="row g-1">
+                                <div class="col">
+                                    <label class="form-label" for="projectID">Nombre del proyecto</label>
+                                    <div class="input-group input-group-sm form-outline">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-secondary" type="button"
+                                                style="border-radius: 0.5rem 0 0 0.5rem;" data-toggle="tooltip"
+                                                data-placement="top"
+                                                title="Se refiere al nombre con el cual se identifica un proyecto.">
+                                                <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                            </button>
+                                        </div>
+                                        <select class="form-select form-control" id="projects"></select>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <label class="form-label" for="projectID">Nombre del Requerimiento</label>
+                                    <div class="input-group input-group-sm form-outline">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-secondary" type="button"
+                                                style="border-radius: 0.5rem 0 0 0.5rem;" data-toggle="tooltip"
+                                                data-placement="top"
+                                                title="Se refiere al requerimiento del proyecto seleccionado.">
+                                                <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                            </button>
+                                        </div>
+                                        <select class="form-select form-control" id="requirements"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row g-1 mt-4">
+                                <div class="col">
+                                    <label class="form-label" for="projectID">Estado de requerimiento</label>
+                                    <div class="input-group input-group-sm form-outline">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-secondary" type="button"
+                                                style="border-radius: 0.5rem 0 0 0.5rem;" data-toggle="tooltip"
+                                                data-placement="top"
+                                                title="Se refiere al estado del requisito seleccionado.">
+                                                <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                            </button>
+                                        </div>
+                                        <select class="form-select form-control" id="selectReqState">
+                                            <option value="Creado">Creado</option>
+                                            <option value="Aprobado">Aprobado</option>
+                                            <option value="Revisado">Revisado</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center mt-4 pt-2">
+                                <button type="submit" class="btn btn-secondary mt-3" style="width: 50%;"
+                                    id="assignStateReqButton">Asignar Estado</button>
+                                <br />
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/javascripts/contractData.js"></script>
+    <script src="/javascripts/sha256.js"></script>
+    <script type="module" src="/javascripts/showProjects.js"></script>
+    <script type="module" src="/javascripts/showRequirements.js"></script>
+    <script type="module" src="/javascripts/assignState.js"></script>
+    {{>scripts}}
+    {{else}}
+    {{>restrictedAccess}}
+    {{/if}}
+</body>
+<footer class="footer2 mt-auto py-0" style="">
+    <div>
+        <img src="images/wave1.svg" alt="">
+    </div>
+</footer>
+
+</html>
