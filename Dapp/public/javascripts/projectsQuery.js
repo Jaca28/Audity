@@ -117,8 +117,8 @@ $(document).ready(function() {
             "lengthMenu": "Showing _MENU_ projects",
             "zeroRecords": "No configured projects found",
             "info": "Showing projects from _START_ al _END_ total _TOTAL_ projects",
-            "infoEmpty": "Showing projects from 0 al 0 toal de 0 projects",
-            "infoFiltered": "(Fliter of total _MAX_ proyectos)",
+            "infoEmpty": "Showing projects from 0 to 0 projects",
+            "infoFiltered": "(Fliter of total _MAX_ projects)",
             "sSearch": "Search:",
             "oPaginate": {
                 "sFirst": "First",
@@ -126,7 +126,7 @@ $(document).ready(function() {
                 "sNext": "Next",
                 "sPrevious": "Previous"
             },
-            "Processing": "Procesando...",
+            "Processing": "Processing...",
         },
         initComplete: function() {
             // document.querySelector(".wallet-img").style.display = "none";
