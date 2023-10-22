@@ -27,8 +27,8 @@ createRequirementButton.addEventListener('click', async(e) => {
 
         if (receipt) {
             Swal.fire(
-                'Requisito de Proyecto Creado!',
-                'Ahora el requisito es actualizable',
+                'Project requirement created!',
+                'The requirement is now upgradeable',
                 'success'
             );
 
@@ -36,8 +36,8 @@ createRequirementButton.addEventListener('click', async(e) => {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'Algo salió mal!',
-                footer: 'Intenta realizar la transacción nuevamente'
+                text: 'Something went wrong!',
+                footer: 'Try transaction again'
             });
         }
     } catch (error) {

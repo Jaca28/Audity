@@ -12,7 +12,7 @@ sendContactForm.addEventListener('click', async(e) => {
         Swal.fire({
             position: 'center',
             icon: 'error',
-            title: 'Por favor rellene todos los campos!',
+            title: 'Please fill all fields!',
             showConfirmButton: false,
             timer: 2000
         })
@@ -22,7 +22,7 @@ sendContactForm.addEventListener('click', async(e) => {
         Swal.fire({
             position: 'center',
             icon: 'success',
-            title: 'Formulario de contacto enviado!',
+            title: 'Contact form sended!',
             showConfirmButton: false,
             timer: 2000
         })

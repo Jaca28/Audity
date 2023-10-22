@@ -30,8 +30,8 @@ assignStateButton.addEventListener('click', async(e) => {
 
         if (receipt) {
             Swal.fire(
-                'Hash almacenado!',
-                'El requisito ha sido etiquetado como Revisado',
+                'Hash stored!',
+                'The requirement has been tagged as Reviewed',
                 'success'
             );
 
@@ -39,8 +39,8 @@ assignStateButton.addEventListener('click', async(e) => {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'Algo salió mal!',
-                footer: 'Intenta realizar la transacción nuevamente'
+                text: 'Something went wrong!',
+                footer: 'Try the transaction again'
             });
         }
     } catch (error) {

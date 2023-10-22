@@ -29,25 +29,25 @@ assignStateButton.addEventListener('click', async(e) => {
         let receipt
         const select = document.getElementById("selectReqState")
 
-        if (select.value === "Creado") {
+        if (select.value === "Created") {
             tx = await logic.setMadeRequirement(projectId, requirementId, lastHash, signer.getAddress());
             receipt = await tx.wait();
-            state = 'creado';
+            state = 'created';
         }
-        if (select.value === "Aprobado") {
+        if (select.value === "Approved") {
             tx = await logic.setApprovedRequirement(projectId, requirementId, lastHash, signer.getAddress());
             receipt = await tx.wait();
-            state = 'aprobado';
+            state = 'approved';
         }
-        if (select.value === "Revisado") {
+        if (select.value === "Reviewed") {
             tx = await logic.setReviewedRequirement(projectId, requirementId, lastHash, signer.getAddress());
             receipt = await tx.wait();
-            state = 'revisado';
+            state = 'reviewed';
         }
         if (receipt) {
             Swal.fire(
-                'Hash almacenado!',
-                'El requisito ha sido etiquetado como ' + state,
+                'Hash stored!',
+                'The requirement has been labeled as ' + state,
                 'success'
             );
 
@@ -55,8 +55,8 @@ assignStateButton.addEventListener('click', async(e) => {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'Algo salió mal!',
-                footer: 'Intenta realizar la transacción nuevamente'
+                text: ' Something went wrong!',
+                footer: 'Try transaction again'
             });
         }
     } catch (error) {

@@ -57,20 +57,20 @@ grantRoleButton.addEventListener('click', async(e) => {
                 Swal.fire({
                     title: '<strong>Rol Otorgado!</strong>',
                     icon: 'success',
-                    html: 'La dirección pública: ' + userAddr + ' ahora posee el rol ' + role,
+                    html: 'The public address: ' + userAddr + ' now has the role of ' + role,
                     showCloseButton: false,
                     showCancelButton: false,
                     focusConfirm: false,
                     allowOutsideClick: false,
                     confirmButtonText: `
                         <a href="/setUser?role=${role}&user=${userAddr}" style="color: #fff">
-                    Configurar Usuario
+                    Configure User
                     </a>`,
                 })
             } else {
                 Swal.fire(
-                    'Rol Otorgado!',
-                    'La dirección pública: ' + userAddr + ' ahora posee el rol ' + role,
+                    'Role Granted!',
+                    'The public address: ' + userAddr + ' now has the role of ' + role,
                     'success'
                 );
             }
@@ -79,8 +79,8 @@ grantRoleButton.addEventListener('click', async(e) => {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'Algo salió mal!',
-                footer: 'Intenta realizar la transacción nuevamente'
+                text: 'Something went wwrong!',
+                footer: 'Try transaction again'
             });
         }
         document.querySelector(".cover-spin").style.display = "none";

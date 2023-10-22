@@ -42,8 +42,8 @@ if (window.ethereum && accounts != '') {
 
     function data_query_swal() {
         Swal.fire({
-            title: 'Conectando...',
-            text: 'Estamos consultando los datos del contrato en la Blockchain.',
+            title: 'Connectinb...',
+            text: 'We are querying the contract data on the Blockchain.',
             showConfirmButton: false
         })
     }
@@ -102,8 +102,8 @@ if (window.ethereum && accounts != '') {
     } else {
         Swal.close();
         Swal.fire({
-            title: 'Acceso denegado',
-            text: 'Su dirección pública no está autorizada para acceder, consulte con el administrador.',
+            title: 'Denied Access',
+            text: 'Your public address is not authorized for access, consult your administrator.',
             showConfirmButton: false
         })
 

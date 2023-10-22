@@ -40,8 +40,8 @@ setUserButton.addEventListener('click', async(e) => {
 
             if (receipt) {
                 Swal.fire(
-                    'Usuario Maker Configurado!',
-                    'La dirección pública: ' + user + ' ahora es usuario Maker',
+                    'Maker user configured!',
+                    'The public address: ' + user + ' is now a Maker user',
                     'success'
                 );
 
@@ -49,8 +49,8 @@ setUserButton.addEventListener('click', async(e) => {
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
-                    text: 'Algo salió mal!',
-                    footer: 'Intenta realizar la transacción nuevamente'
+                    text: 'Something went wrong!',
+                    footer: 'Try the transaction again'
                 });
             }
         } catch (error) {
@@ -75,8 +75,8 @@ setUserButton.addEventListener('click', async(e) => {
 
             if (receipt) {
                 Swal.fire(
-                    'Usuario Reviewer Configurado!',
-                    'La dirección pública: ' + user + ' ahora es usuario Reviewer',
+                    'Reviewer User Configured!',
+                    'The public address: ' + user + ' is now a Reviewer user',
                     'success'
                 );
 
@@ -84,8 +84,8 @@ setUserButton.addEventListener('click', async(e) => {
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
-                    text: 'Algo salió mal!',
-                    footer: 'Intenta realizar la transacción nuevamente'
+                    text: 'Something went wrong!',
+                    footer: 'Try the transaction again'
                 });
             }
         } catch (error) {
@@ -111,8 +111,8 @@ setUserButton.addEventListener('click', async(e) => {
             if (receipt) {
 
                 Swal.fire(
-                    'Usuario Approver Configurado!',
-                    'La dirección pública: ' + user + ', ahora es usuario Approver',
+                    'Approver User Configured',
+                    'The public address: ' + user + ', is now an Approver user',
                     'success'
                 );
 
@@ -120,8 +120,8 @@ setUserButton.addEventListener('click', async(e) => {
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
-                    text: 'Algo salió mal!',
-                    footer: 'Intenta realizar la transacción nuevamente'
+                    text: 'Something went wrong!',
+                    footer: 'Try the transaction again'
                 });
             }
         } catch (error) {

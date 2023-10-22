@@ -116,7 +116,7 @@ $(document).ready(function() {
         "language": {
             "lengthMenu": "Showing _MENU_ projects",
             "zeroRecords": "No configured projects found",
-            "info": "Showing projects from _START_ al _END_ total _TOTAL_ projects",
+            "info": "Showing projects from _START_ of _END_ total _TOTAL_ projects",
             "infoEmpty": "Showing projects from 0 to 0 projects",
             "infoFiltered": "(Fliter of total _MAX_ projects)",
             "sSearch": "Search:",
@@ -172,7 +172,7 @@ async function closeNowProject(projectId) {
             document.getElementById("contenedorB").style.display = "block";
 
             Swal.fire({
-                title: '<strong>Proyecto Cerrado!</strong>',
+                title: '<strong>Closed Project!</strong>',
                 icon: 'success',
                 html: 'The project has been closed and its requirements cannot be updated.',
                 confirmButtonText: '<a href="/projects" style="color:#fff;border-radius: 10rem;">OK</a> ',

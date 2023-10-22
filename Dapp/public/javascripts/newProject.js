@@ -23,15 +23,15 @@ createProjectButton.addEventListener('click', async(e) => {
             document.querySelector(".show").style.display = "block";
 
             Swal.fire({
-                title: '<strong>Proyecto Creado!</strong>',
+                title: '<strong>Project Created!</strong>',
                 icon: 'success',
                 allowOutsideClick: false,
-                html: 'Ahora puede configurar los requisitos de su proyecto',
+                html: 'You can now configure your project requirements',
                 showCloseButton: false,
                 showCancelButton: false,
                 closeOnCancel: true,
                 focusConfirm: false,
-                confirmButtonText: '<a href="/newRequirement" style="color:#fff;border-radius: 10rem;">Configurar</a> ',
+                confirmButtonText: '<a href="/newRequirement" style="color:#fff;border-radius: 10rem;">Configure</a> ',
                 confirmButtonColor: '#F22E76',
             })
 
@@ -39,8 +39,8 @@ createProjectButton.addEventListener('click', async(e) => {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'Algo salió mal!',
-                footer: 'Intenta realizar la transacción nuevamente'
+                text: 'Something went wrong!',
+                footer: 'Try the transaction again'
             });
         }
         document.querySelector(".cover-spin").style.display = "none";

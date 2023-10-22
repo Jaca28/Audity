@@ -4,25 +4,25 @@ const availabilityTextButton = document.getElementById('info-availability')
 const trazTextButton = document.getElementById('traz-btn')
 
 
-texto1 = `La plataforma Block E Design opera con un sistema de acceso por roles para interactuar con los datos y
-los llamados a las funciones, limitando accesos y permisos de visualización, modificación y otras
-funcionalidades.
+texto1 = `The Audity  platform operates with a role-based access system to interact with the data and function calls, limiting access and permissions to view, modify and
+and function calls, limiting access and permissions for visualization, modification and other functionalities.
+functionalities.
 <br/>
 <br/>
-Las credenciales por medio de las cuales se definen los roles, usan la criptografía de llave pública,
-permitiendo la compatibilidad con las billeteras Web3.`
+The credentials through which the roles are defined use public key cryptography,
+allowing compatibility with Web wallets3.`
 
-texto2 = `Las propiedades distribuidas y descentralizadas de la blockchain permiten acceder a los datos de manera
-remota y segura. Los contratos inteligentes usados en Block E Design, son desplegados y accedidos a
-través de una blockchain basada en Ethereum Virtual Machine (EVM).`
+texto2 = `The distributed and decentralized properties of the blockchain allow data to be accessed remotely and securely.
+remotely and securely. The smart contracts used in Audity are deployed and accessed through an Ethereum Virtual Machine (EVM)-based blockchain.
+through a blockchain based on Ethereum Virtual Machine (EVM).`
 
-texto3 = `El encadenamiento de bloques y la indexación de los registros mediante el identificador de proyectos y
-de requisitos, permite consultar todo el histórico de registros relacionados con cualquiera de los
-documentos.`
+texto3 = `The block chaining and indexing of the records by means of the project identifier and the requirements identifier, allows to consult the entire history of records related to any of the
+requirements identifier, allows to consult the entire history of records related to any of the documents.
+documents.`
 
 securityTextButton.addEventListener('click', function () {
     Swal.fire({
-        title: '<strong>Seguridad y control de acceso</strong>',
+        title: '<strong>Security and Control Access</strong>',
         imageUrl: 'images/ethereum2.jfif',
         html: texto1,
         allowOutsideClick: true,
@@ -36,7 +36,7 @@ securityTextButton.addEventListener('click', function () {
 
 availabilityTextButton.addEventListener('click', function () {
     Swal.fire({
-        title: '<strong>Disponibilidad de la Información</strong>',
+        title: '<strong>Information Availability</strong>',
         imageUrl: 'images/emv.jfif',
         imgWidth: 400,
         imgHeight: 100,
@@ -52,7 +52,7 @@ availabilityTextButton.addEventListener('click', function () {
 
 trazTextButton.addEventListener('click', function () {
     Swal.fire({
-        title: '<strong>Trazabilidad de información</strong>',
+        title: '<strong>Information traceability</strong>',
         imageUrl: 'images/ethereum.png',
         imgWidth: 400,
         imgHeight: 100,

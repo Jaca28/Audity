@@ -30,15 +30,15 @@ registerRequestButton.addEventListener('click', async(e) => {
             document.querySelector(".show").style.display = "flex";
 
             Swal.fire({
-                title: '<strong>Solicitud de registro enviada!</strong>',
+                title: '<strong>Register Request sended!</strong>',
                 icon: 'success',
                 allowOutsideClick: false,
-                html: 'La solicitud será revisada por un usuario administrador',
+                html: 'The request will be reviewed by a user administrator',
                 showCloseButton: true,
                 showCancelButton: false,
                 closeOnCancel: true,
                 focusConfirm: false,
-                confirmButtonText: '<a href="/" style="color: #fff">Inicio</a>',
+                confirmButtonText: '<a href="/" style="color: #fff">Home</a>',
                 confirmButtonTextColor: '#fff',
                 confirmButtonColor: '#F22E76',
             })
@@ -48,8 +48,8 @@ registerRequestButton.addEventListener('click', async(e) => {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'Algo salió mal!',
-                footer: 'Intenta realizar la solicitud nuevamente'
+                text: 'Something went wrong!',
+                footer: 'Try transaction again'
             });
         }
         document.querySelector(".cover-spin").style.display = "none";

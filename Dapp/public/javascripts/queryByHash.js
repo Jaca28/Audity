@@ -218,12 +218,12 @@ hashQueryButton.addEventListener('click', async(e) => {
         $('#historical').DataTable({
             "data": arr,
             "columns": [
-                { "title": "Id proyecto" },
-                { "title": "Id Requisito" },
-                { "title": "Estado" },
+                { "title": "Project ID" },
+                { "title": "Requirement ID" },
+                { "title": "Status" },
                 { "title": "Hash" },
-                { "title": "Fecha" },
-                { "title": "Responsable" },
+                { "title": "Date" },
+                { "title": "Manager" },
             ],
 
             "columnDefs": [{
@@ -246,19 +246,19 @@ hashQueryButton.addEventListener('click', async(e) => {
             "bDestroy": true,
             //para cambiar el lenguaje a español
             "language": {
-                "lengthMenu": "Mostrar _MENU_ Requisitos",
-                "zeroRecords": "No se encontraron datos históricos",
-                "info": "Mostrando Requisitos del _START_ al _END_ de un total de _TOTAL_ requisitos",
-                "infoEmpty": "Mostrando proyectos del 0 al 0 de un total de 0 requisitos",
-                "infoFiltered": "(filtrado de un total de _MAX_ requisitos)",
-                "sSearch": "Buscar:",
+                "lengthMenu": "Showing _MENU_ Requirements",
+                "zeroRecords": "No historical data found",
+                "info": "Showing Requirements from _START_ to _END_ of _TOTAL_ requirements",
+                "infoEmpty": "Showing requirements from 0 to 0 of 0 requirements",
+                "infoFiltered": "(filter of total _MAX_ requirements)",
+                "sSearch": "Search:",
                 "oPaginate": {
-                    "sFirst": "Primero",
-                    "sLast": "Último",
-                    "sNext": "Siguiente",
-                    "sPrevious": "Anterior"
+                    "sFirst": "First",
+                    "sLast": "Last",
+                    "sNext": "Next",
+                    "sPrevious": "Previous"
                 },
-                "sProcessing": "Procesando...",
+                "sProcessing": "Processing...",
             }
         });
     });
