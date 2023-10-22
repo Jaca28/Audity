@@ -73,12 +73,12 @@ $(document).ready(function() {
         "data": arr,
         "columns": [
             { "title": "Id" },
-            { "title": "Nombre" },
-            { "title": "Administrador" },
-            { "title": "Estado" },
-            { "title": "Última actualización" },
-            { "title": "Requisitos" },
-            { "title": "Cerrar" },
+            { "title": "Name" },
+            { "title": "Administrator" },
+            { "title": "Status" },
+            { "title": "Last update" },
+            { "title": "Requirements" },
+            { "title": "Close" },
         ],
         "columnDefs": [{
                 targets: [5],
@@ -114,17 +114,17 @@ $(document).ready(function() {
         ],
         //para cambiar el lenguaje a español
         "language": {
-            "lengthMenu": "Mostrar _MENU_ proyectos",
-            "zeroRecords": "No se encontraron proyectos configurados",
-            "info": "Mostrando proyectos del _START_ al _END_ de un total de _TOTAL_ proyectos",
-            "infoEmpty": "Mostrando proyectos del 0 al 0 de un total de 0 proyectos",
-            "infoFiltered": "(filtrado de un total de _MAX_ proyectos)",
-            "sSearch": "Buscar:",
+            "lengthMenu": "Showing _MENU_ projects",
+            "zeroRecords": "No configured projects found",
+            "info": "Showing projects from _START_ al _END_ total _TOTAL_ projects",
+            "infoEmpty": "Showing projects from 0 al 0 toal de 0 projects",
+            "infoFiltered": "(Fliter of total _MAX_ proyectos)",
+            "sSearch": "Search:",
             "oPaginate": {
-                "sFirst": "Primero",
-                "sLast": "Último",
-                "sNext": "Siguiente",
-                "sPrevious": "Anterior"
+                "sFirst": "First",
+                "sLast": "Last",
+                "sNext": "Next",
+                "sPrevious": "Previous"
             },
             "Processing": "Procesando...",
         },
@@ -145,13 +145,13 @@ $(document).ready(function() {
 async function closeProject(projectId) {
 
     Swal.fire({
-        title: 'Está seguro que desea cerrar el proyecto?',
-        text: "Los requisitos ya no serán actualizables",
+        title: 'Are you sure you want to close the project?',
+        text: "The requirements will no longer be upgradeable.",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Cerrar'
+        confirmButtonText: 'Close'
     }).then((result) => {
         if (result.isConfirmed) {
             closeNowProject(projectId);
@@ -174,7 +174,7 @@ async function closeNowProject(projectId) {
             Swal.fire({
                 title: '<strong>Proyecto Cerrado!</strong>',
                 icon: 'success',
-                html: 'El proyecto ha sido cerrado y sus requisitos no son actualizables',
+                html: 'The project has been closed and its requirements cannot be updated.',
                 confirmButtonText: '<a href="/projects" style="color:#fff;border-radius: 10rem;">OK</a> ',
                 confirmButtonColor: '#F22E76',
             }).then(function() {
