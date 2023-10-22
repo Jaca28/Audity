@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+{{>header}}
+
+<body>
+    <div class="body-content row flex-wrap">
+        {{#if (or (eq roll 'superAdmin') (eq roll 'admin') (eq roll 'maker') (eq roll 'reviewer') (eq roll 'approver')) }}
+        {{>navbar}}
+        {{>sidebar}}
+        <div class="col-md-10 vertical-center1 d-flex flex-sm-wrap">
+            <div class="row g-1 cover-spin" style="display:none; margin: auto 20em auto auto ;">
+                <div class="cover-spin-message">Esperando Confirmación ...</div>
+            </div>
+            <div class="show d-flex flex-sm-wrap">
+                <div class="row hashForm">
+                    <div class="col-md-4 g-1 pb-2" data-aos="fade-right" data-aos-offset="-100">
+                        <div class="card p-2 text-center">
+                            <div class="pb-2">
+                                <span class="badge badge-pill badge-outline-primary"><i class="fa fa-search"></i></span>
+                            </div>
+                            <div class="">
+                                <h6 class="font-weight-medium" style="font-weight: 800; font-size: 1.5rem">
+                                    Consulta un documento
+                                </h6>
+                            </div>
+                            <div class="">
+                                <p class="pt-0 small">
+                                    Sube un documento y consulta el hash, proyecto e información correspondiente.
+                                </p>
+                            </div>
+                            <div class="pt-2">
+                                <img class="img-fluid" src="images/create-project.svg">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8 g-1" data-aos="fade-left" data-aos-offset="-100">
+                        <div class="card p-5">
+                            <div class="row g-1">
+                                <div class="col">
+                                    <form id="filehash" action="#" class="has-success form-group">
+                                        <input id="myfilehash" name="file" type="file" class="" />
+                                        <br>
+                                        <br>
+                                        <h6 id="file_hash"></h6>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-secondary mt-3" style="width: 50%;"
+                                    id="hashQueryButton">Consultar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row tableHashQuery">
+                    <div class="col-md-12 d-flex flex-sm-wrap">
+                        <div class="card p-5 mt-4 mb-4">
+                            <div class="table-responsive">
+                                <table id="historical" class="table table-striped table-bordered" style="width:100%">
+                                </table>
+                            </div>
+                            <div class="text-center" style="margin: 0;
+                                                        position: relative;
+                                                        left: 50%;
+                                                        -ms-transform: translateX(-50%);
+                                                        transform: translateX(-50%);">
+                                <a href="/hashQuery" class="btn btn-secondary mt-3">
+                                    Consultar otro Hash
+                                </a>
+                            </div>
+                        </div>  
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/javascripts/contractData.js"></script>
+    <script src="/javascripts/sha256.js"></script>
+    {{!--
+    <script type="module" src="/javascripts/showProjects.js"></script>
+    <script type="module" src="/javascripts/showRequirements.js"></script> --}}
+    <script type="module" src="/javascripts/queryByHash.js"></script>
+    {{>scripts}}
+    {{else}}
+    {{>restrictedAccess}}
+    {{/if}}
+</body>
+<footer class="footer2 mt-auto py-0" style="">
+    <div>
+        <img src="images/wave1.svg" alt="">
+    </div>
+</footer>
+
+</html>
