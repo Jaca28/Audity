@@ -56,7 +56,7 @@ for (let i = 0; i < userProjects.length; i++) {
         state,
         date,
         requirements,
-        'Cerrar'
+        'Close'
     ])
 }
 
@@ -102,7 +102,7 @@ $(document).ready(function() {
                 render: function(data, type, row, meta) {
                     if (type === 'display') {
                         return $(`<button type="button" class="btn btn-info btn-request" data-row0=${row[0]}>`)
-                            .text('Cerrar')
+                            .text('Close')
                             .wrap('<div></div>')
                             .parent()
                             .html()
