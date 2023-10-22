@@ -55,7 +55,7 @@ grantRoleButton.addEventListener('click', async(e) => {
             document.querySelector(".show").style.display = "flex";
             if (role == 'maker' || role == 'reviewer' || role == 'approver') {
                 Swal.fire({
-                    title: '<strong>Rol Otorgado!</strong>',
+                    title: '<strong>Rol Granted!</strong>',
                     icon: 'success',
                     html: 'The public address: ' + userAddr + ' now has the role of ' + role,
                     showCloseButton: false,
