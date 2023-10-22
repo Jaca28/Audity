@@ -1,7 +1,7 @@
 import { ethers } from "https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.0/ethers.esm.js";
 import { logicAddress, dataAddress, dataAbi } from "../javascripts/contractData.js"
 const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
-const ETH_EXPLORER = 'https://mumbai.polygonscan.com'
+const ETH_EXPLORER = 'https://sepolia-blockscout.scroll.io/'
 
 const signer = provider.getSigner();
 const data = new ethers.Contract(dataAddress, dataAbi, signer);

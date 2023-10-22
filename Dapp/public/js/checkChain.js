@@ -4,7 +4,7 @@ export const checkChain = async () => {
             // check if the chain to connect to is installed
             await window.ethereum.request({
                 method: 'wallet_switchEthereumChain',
-                params: [{ chainId: '0x13881' }], // chainId must be in hexadecimal numbers
+                params: [{ chainId: '0x8274f' }], // chainId must be in hexadecimal numbers
             });
         } catch (error) {
             // This error code indicates that the chain has not been added to MetaMask
@@ -15,15 +15,15 @@ export const checkChain = async () => {
                         method: 'wallet_addEthereumChain',
                         params: [
                             {
-                                chainId: '0x13881',
-                                chainName: 'Polygon Mumbai Testnet',
-                                rpcUrls: ['https://rpc-mumbai.maticvigil.com/'],
+                                chainId: '0x8274f',
+                                chainName: 'Scroll Sepolia Testnet',
+                                rpcUrls: ['https://scroll-testnet-public.unifra.io	'],
                                 nativeCurrency: {
-                                    name: "Mumbai Matic",
-                                    symbol: "MATIC",
+                                    name: "ETH",
+                                    symbol: "ETH",
                                     decimals: 18
                                 },
-                                blockExplorerUrls: ["https://mumbai.polygonscan.com/"]
+                                blockExplorerUrls: ["https://sepolia-blockscout.scroll.io/"]
                             },
                         ],
                     });
