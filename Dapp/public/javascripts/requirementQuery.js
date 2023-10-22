@@ -76,7 +76,7 @@ async function showRequirements(projectId) {
             requirementState,
             requirementHash,
             lastUpdate,
-            'Ver'
+            'See'
         ]);
     }
     $(document).ready(function() {
@@ -112,7 +112,7 @@ async function showRequirements(projectId) {
                 "zeroRecords": "No configured requirements found",
                 "info": "Showing requirements from _START_ al _END_ to _TOTAL_ requirements",
                 "infoEmpty": "Showing requirements from  0 to 0 requirements",
-                "infoFiltered": "(Fliter of  total  _MAX_ requirements)",
+                "infoFiltered": "(Fliter of total  _MAX_ requirements)",
                 "sSearch": "Search:",
                 "oPaginate": {
                     "sFirst": "First",
